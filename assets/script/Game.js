@@ -35,6 +35,11 @@ cc.Class({
         scoreDisplay: {
             default: null,
             type: cc.Label
+        },
+        // 得分音效资源
+        scoreAudio: {
+            default: null,
+            type: cc.AudioClip
         }
     },
 
@@ -96,7 +101,9 @@ cc.Class({
     gainScore: function () {
         this.score += 1;
         // 更新 scoreDisplay Label 的文字
-        this.scoreDisplay.string = 'Score: ' + this.score;
+        this.scoreDisplay.string = 'Score: ' + this.score.toString();
+        // 播放得分音效
+        cc.audioEngine.playEffect(this.scoreAudio, false);
     },
 
     gameOver: function () {

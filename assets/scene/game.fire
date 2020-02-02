@@ -536,6 +536,9 @@
     "jumpDuration": 0.2,
     "maxMoveSpeed": 1000,
     "accel": 350,
+    "jumpAudio": {
+      "__uuid__": "dc194f1a-c8a5-46ca-aaf9-f03b70974af5"
+    },
     "_id": "50huNH3WNHZIrDS9EkbVW2"
   },
   {
@@ -670,6 +673,9 @@
     },
     "scoreDisplay": {
       "__id__": 13
+    },
+    "scoreAudio": {
+      "__uuid__": "55d110b9-bab6-4d9d-9416-03e46904fa35"
     },
     "_id": "besfn3+5tJD55b9j8DhEf9"
   }

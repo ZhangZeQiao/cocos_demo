@@ -27,6 +27,8 @@ cc.Class({
     onPicked: function () {
         // 当星星被收集时，调用 Game 脚本中的接口，生成一个新的星星
         this.game.spawnNewStar();
+        // 调用 Game 脚本的得分方法
+        this.game.gainScore();
         // 然后销毁当前星星节点
         this.node.destroy();
     },
@@ -46,5 +48,10 @@ cc.Class({
             this.onPicked();
             return;
         }
+
+        // 根据 Game 脚本中的计时器更新星星的透明度
+        var opacityRatio = 1 - this.game.timer / this.game.starDuration;
+        var minOpacity = 50;
+        this.node.opacity = minOpacity + Math.floor(opacityRatio * (255 - minOpacity));
     },
 });

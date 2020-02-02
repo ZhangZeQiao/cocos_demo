@@ -11,6 +11,12 @@
 cc.Class({
     extends: cc.Component,
 
+    /* 
+    TODO: Cocos Creator 规定一个节点具有的属性都需要写在 properties 代码块中，
+    这些属性将规定主角的移动方式，在代码中我们不需要关心这些数值是多少，
+    因为我们之后会直接在 属性检查器 中设置这些数值。
+    TODO: 以后在游戏制作过程中，我们可以将需要随时调整的属性都放在 properties 中。
+    */
     properties: {
         // 这个属性引用了星星预制资源
         starPrefab: {
@@ -45,6 +51,8 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
+    // TODO: onLoad 方法会在场景加载后立刻执行，所以我们会把初始化相关的操作和逻辑都放在这里面。
+    // 可以初始化一些不常改变的属性。
     onLoad: function () {
         // 获取地平面的 y 轴坐标
         this.groundY = this.ground.y + this.ground.height / 2;
@@ -58,14 +66,21 @@ cc.Class({
     },
 
     spawnNewStar: function () {
+        /* 
+        TODO: cc.instantiate()：克隆指定的任意类型的对象，或者从 Prefab 实例化出新节点，返回值为 Node 或者 Object。
+        instantiate 例示，举例说明，实例化
+        （Instantiate 时，function 和 dom 等非可序列化对象会直接保留原有引用，Asset 会直接进行浅拷贝，可序列化类型会进行深拷贝。）
+        */
         // 使用给定的模板在场景中生成一个新节点
         var newStar = cc.instantiate(this.starPrefab);
-        // 将新增的节点添加到 Canvas 节点下面
+        // TODO: 当前节点：this.node  因为此Game.js文件是添加到 Canvas 上，所以这里的 this.node 代表 Canvas
+        // TODO: 将新增的节点添加到 Canvas 节点下面
         this.node.addChild(newStar);
         // 为星星设置一个随机位置
         newStar.setPosition(this.getNewStarPosition());
 
-        // 在星星组件上暂存 Game 对象的引用
+        // TODO: 在星星组件上暂存 Game 对象的引用
+        // TODO: 获取JavaScript模块：this.player.getComponent('Player')
         newStar.getComponent('Star').game = this;
 
         // 重置计时器，根据消失时间范围随机取一个值
@@ -84,10 +99,14 @@ cc.Class({
         return cc.v2(randX, randY);
     },
 
+    // TODO: 只在第一次update前系统回调一次。这里可以初始化一些经常改变的属性。
     start() {
 
     },
 
+    // TODO: update 在场景加载后就会每帧调用一次，我们一般把需要经常计算或及时更新的逻辑内容放在这里。
+    // 每一帧渲染前系统回调，主要用于处理逻辑。dt为上一帧到当前帧时间ms间隔。
+    // lateUpdate(dt)：每一帧渲染后系统回调，用于处理逻辑。dt为上一帧到当前帧时间ms间隔。
     update: function (dt) {
         // 每帧更新计时器，超过限度还没有生成新的星星
         // 就会调用游戏失败逻辑
@@ -102,16 +121,17 @@ cc.Class({
         this.score += 1;
         // 更新 scoreDisplay Label 的文字
         this.scoreDisplay.string = 'Score: ' + this.score.toString();
-        // 播放得分音效
+        // TODO: 播放得分音效
         cc.audioEngine.playEffect(this.scoreAudio, false);
     },
 
     gameOver: function () {
+        // TODO: Node extends _BaseNode.stopAllActions
         this.player.stopAllActions(); //停止 player 节点的跳跃动作
         cc.director.loadScene('game');
 
         /* 
-        这里需要初学者了解的是，cc.director 是一个管理你的游戏逻辑流程的单例对象。
+        这里需要初学者了解的是，TODO: cc.director 是一个管理你的游戏逻辑流程的单例对象。
         由于 cc.director 是一个单例，你不需要调用任何构造函数或创建函数，
         使用它的标准方法是通过调用 cc.director.methodName()，例如这里的 cc.director.loadScene('game') 就是重新加载游戏场景 game，也就是游戏重新开始。
         而节点下的 stopAllActions 方法就显而易见了，这个方法会让节点上的所有 Action 都失效。

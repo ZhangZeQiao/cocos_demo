@@ -1,0 +1,72 @@
+Cocos Creator入门：生命周期函数_南风古-CSDN博客  
+https://blog.csdn.net/lihao161530340/article/details/80945739
+
+Cocos Creator 为组件脚本提供了生命周期的回调函数。用户通过定义特定的函数回调在特定的时期编写相关脚本。
+目前提供给用户的声明周期回调函数有：
+onLoad
+start
+update
+lateUpdate
+onDestroy
+onEnable
+onDisable
+
+1、onLoad
+onLoad 组件脚本的初始化阶段，我们提供了 onLoad 回调函数。
+onLoad 回调会在这个组件所在的场景被载入的时候触发，
+在 onLoad 阶段，保证了你可以获取到场景中的其他节点，以及节点关联的资源数据。
+通常，我们会在 onLoad 阶段去做一些初始化相关的操作。
+
+2、start
+start 回调函数会在组件第一次激活前，也就是第一次执行 update 之前触发。
+start 通常用于初始化一些中间状态的数据，这些数据可能在 update 时会发生改变，并且被频繁的 enable 和 disable。
+
+3、update
+TODO: 游戏开发的一个关键点是在每一帧渲染前更新物体的行为，状态和方位。这些更新操作通常都放在 update 回调中。
+
+4、lateUpdate
+update 会在所有动画更新前执行，
+但如果我们要在动画更新之后才进行一些额外操作，或者希望在所有组件的 update 都执行完之后才进行其它操作，
+那就需要用到 lateUpdate 回调。
+
+5、onEnable
+当组件的 enabled 属性从 false 变为 true 时，会激活 onEnable 回调。
+倘若节点第一次被创建且 enabled 为 true，则会在 onLoad 之后，start 之前被调用。
+
+6、onDisable
+当组件的 enabled 属性从 true 变为 false 时，会激活 onDisable 回调。
+
+7、onDestroy
+当组件调用了 destroy()，会在该帧结束被统一回收，此时会调用 onDestroy 回调。
+
+-------------------------
+    // 生命周期函数 一个组件（脚本）被挂载到对象上 从游戏开始到游戏结束所执行的所有方法
+
+    // 执行最早的方法 只执行一次
+    onLoad(){
+        cc.log("onLoad 执行最早,只执行一次");
+    }
+    start(){
+        cc.log("start  在 onload 之后执行只执行一次 ");
+    }
+    // update 可以不带参数  参数的意思是游戏一帧执行的时间  TODO: 大概为0.017秒 数值不固定
+    update(dt){
+        cc.log("update 持续执行"+dt);
+    }
+    // 在 update 执行之后   马上执行 
+    lateUpdate(){
+      cc.log("lateUpdate 执行了");
+    }
+    // 执行最晚的方法
+    onDestroy(){
+        cc.log("执行最晚的方法，物体被销毁之前执行");        
+    }
+    // 脚本启用会执行
+    onEnable(){
+
+    }
+    //脚本禁用会执行
+    onDisable(){
+
+    }
+-------------------------

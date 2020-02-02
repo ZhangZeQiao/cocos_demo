@@ -1,3 +1,5 @@
+资源管理注意事项 - meta 文件 · GitBook  https://docs.cocos.com/creator/manual/zh/advanced-topics/meta.html
+
 Cocos Creator 会为 assets 目录下的每一个文件和目录生成一个同名的 meta 文件.
 
 一、meta 文件的作用

@@ -87,10 +87,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 14
+        "__id__": 16
       },
       {
-        "__id__": 15
+        "__id__": 17
       }
     ],
     "_prefab": null,
@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        355.0645155322971,
+        304.42957477952524,
         0,
         0,
         0,
@@ -553,6 +553,12 @@
     "_components": [
       {
         "__id__": 13
+      },
+      {
+        "__id__": 14
+      },
+      {
+        "__id__": 15
       }
     ],
     "_prefab": null,
@@ -634,6 +640,35 @@
     "_N$overflow": 0,
     "_N$cacheMode": 0,
     "_id": "006RJ7ch9FHJKwszDT8RSn"
+  },
+  {
+    "__type__": "cc.Animation",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 12
+    },
+    "_enabled": true,
+    "_defaultClip": {
+      "__uuid__": "d8f2e945-5d63-4c26-ac49-24933ded4cf8"
+    },
+    "_clips": [
+      {
+        "__uuid__": "d8f2e945-5d63-4c26-ac49-24933ded4cf8"
+      }
+    ],
+    "playOnLoad": true,
+    "_id": "94bNe6BL5JDpuRQ7yZJDm3"
+  },
+  {
+    "__type__": "2a65bmFSSBEZoMp3GwKCo5c",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 12
+    },
+    "_enabled": true,
+    "_id": "2bpb+3TbNHOYUbRoWEYCbz"
   },
   {
     "__type__": "cc.Canvas",

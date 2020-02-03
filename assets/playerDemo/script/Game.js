@@ -63,6 +63,8 @@ cc.Class({
         this.spawnNewStar();
         // 初始化计分
         this.score = 0;
+
+        console.log("------zzq-------")
     },
 
     spawnNewStar: function () {
@@ -136,5 +138,11 @@ cc.Class({
         使用它的标准方法是通过调用 cc.director.methodName()，例如这里的 cc.director.loadScene('game') 就是重新加载游戏场景 game，也就是游戏重新开始。
         而节点下的 stopAllActions 方法就显而易见了，这个方法会让节点上的所有 Action 都失效。
         */
+    },
+
+    heihei: function () {
+        this.scoreDisplay.string = 'Game: heihei';
+        console.log("------zzq-------Game: 嘿嘿");
     }
+
 });

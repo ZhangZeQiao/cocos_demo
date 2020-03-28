@@ -1,0 +1,23 @@
+properties: {
+        normalTip: {
+            type: cc.Node,
+            default: null
+        },
+        countdownTip: {
+            type: cc.Node,
+            default: null
+        },
+        limitTip: {
+            type: cc.Label,
+            default: null
+        },
+},
+
+
+ this.normalTip.active = false;
+        this.countdownTip.active = false;
+        this.limitTip.node.active = false;
+
+         this.normalTip.node.active = false;//报错
+        this.countdownTip.node.active = false;//报错
+        this.limitTip.active = false;//无效
